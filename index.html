@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на юбилей свадьбы</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT:wght@400;700&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #fdf9f7 0%, #fff5f0 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: #333;
+            font-family: 'Roboto Condensed', sans-serif;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        body:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath fill='%23e8d0ce' fill-opacity='0.1' d='M39.7,-45.8C53.1,-32.5,66.8,-19.7,69.5,-4.6C72.3,10.5,64.1,28,53.1,43.8C42.1,59.6,28.2,73.7,11.5,78.8C-5.3,83.9,-24.9,80,-40.7,69.1C-56.5,58.3,-68.4,40.5,-73.6,21.1C-78.9,1.7,-77.4,-19.3,-68.8,-36.1C-60.1,-52.9,-44.3,-65.5,-27.5,-77.1C-10.7,-88.6,7.1,-99.1,21.8,-94.9C36.5,-90.6,48,-71.6,55.9,-53.9C63.8,-36.2,68.1,-19.7,69.1,-2.8C70.1,14.1,67.8,31.4,61.4,47.2C55,63,44.5,77.3,31.6,86.1C18.7,94.9,3.3,98.3,-11.5,96.1C-26.3,93.8,-40.4,85.9,-51.1,74.6C-61.8,63.3,-69.1,48.6,-75.1,33.6C-81.1,18.6,-85.8,3.2,-83.9,-11.4C-82,-26,-73.5,-39.9,-62.1,-52.3C-50.7,-64.7,-36.4,-75.6,-21.3,-86.8C-6.2,-98,9.7,-109.5,23.1,-105.1C36.5,-100.7,47.4,-80.4,56.5,-62.2C65.6,-43.9,72.9,-27.7,74.6,-10.8C76.3,6.1,72.3,23.6,65.5,40.3C58.7,57,49,72.8,36.5,83.2C24,93.6,8.7,98.5,-6.1,97.1C-21,95.7,-35.3,88,-46.3,76.3C-57.3,64.7,-65.1,49.1,-72.5,33.1C-79.9,17.1,-86.9,0.7,-85.7,-15.2C-84.4,-31.1,-75,-46.5,-62.8,-59.5C-50.5,-72.5,-35.5,-83.1,-19.7,-93.6C-3.9,-104.1,12.8,-114.5,26.7,-109.8C40.7,-105.1,51.9,-85.4,62.1,-67.4C72.3,-49.4,81.5,-33.1,83.4,-16C85.3,1.1,80,18.9,73.1,36.1C66.1,53.3,57.5,69.9,45.3,80.1C33.1,90.3,17.5,94.1,1.8,93.3C-13.9,92.5,-29.7,87.1,-42.6,77.3C-55.5,67.5,-65.5,53.3,-71.9,37.7C-78.3,22.1,-81.2,5,-80.6,-12.2C-80,-29.4,-75.9,-46.6,-67.7,-61.4C-59.5,-76.3,-47.3,-88.8,-33.1,-98.3C-18.9,-107.8,-2.7,-114.3,13.3,-112.1C29.3,-109.9,45.3,-99.1,58.2,-85.2C71.1,-71.3,80.9,-54.4,87.5,-36.7C94.1,-19,97.5,-0.5,95.4,17.9C93.3,36.3,85.6,54.6,74.5,69.6C63.4,84.6,48.8,96.4,33.1,102.6C17.4,108.8,0.5,109.5,-15.8,106.7C-32.1,103.9,-48.1,97.6,-60.7,86.8C-73.3,76,-82.5,60.7,-89.3,44.5C-96.1,28.3,-100.5,11.1,-100.3,-6.1C-100.1,-23.3,-95.3,-40.5,-86.6,-55.7C-77.9,-70.9,-65.3,-84.1,-50.8,-94.3C-36.3,-104.5,-19.9,-111.7,-3.2,-110.3C13.5,-108.9,26.3,-98.9,39.7,-45.8Z' transform='translate(100 100)'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.1;
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            position: relative;
+            border: 1px solid rgba(232, 208, 206, 0.3);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #f8f0ee 0%, #fcf8f5 100%);
+            color: #5a4a42;
+            text-align: center;
+            padding: 40px 20px 30px;
+            position: relative;
+            border-bottom: 1px solid rgba(232, 208, 206, 0.5);
+        }
+        
+        .couple-photo {
+            width: 100%;
+            height: 300px;
+            margin: 0 auto 25px;
+            overflow: hidden;
+            position: relative;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background: #f8f0ee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        
+        .couple-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .photo-placeholder {
+            text-align: center;
+            color: #c8a29d;
+        }
+        
+        .photo-placeholder i {
+            font-size: 4rem;
+            margin-bottom: 15px;
+        }
+        
+        .couple-names {
+            font-family: 'Old Standard TT', serif;
+            font-size: 2.2rem;
+            margin: 15px 0;
+            color: #8c6b62;
+            letter-spacing: 1px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .couple-names:before, .couple-names:after {
+            content: "✽";
+            margin: 0 15px;
+            color: #d8b9b5;
+            font-size: 1.2rem;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            color: #7a665f;
+            font-weight: 400;
+        }
+        
+        .content {
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .details {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .detail-card {
+            background: #fcf8f5;
+            border-radius: 12px;
+            padding: 30px 25px;
+            flex: 1;
+            min-width: 250px;
+            box-shadow: 0 8px 20px rgba(149, 118, 111, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(232, 208, 206, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .detail-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(149, 118, 111, 0.15);
+        }
+        
+        .detail-card i {
+            font-size: 2.2rem;
+            color: #c8a29d;
+            margin-bottom: 20px;
+            background: rgba(232, 208, 206, 0.2);
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+        
+        .detail-card h3 {
+            margin-bottom: 15px;
+            color: #8c6b62;
+            font-family: 'Old Standard TT', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .detail-card p {
+            margin: 8px 0;
+            color: #7a665f;
+            font-size: 1.05rem;
+            line-height: 1.5;
+        }
+        
+        .action-btn {
+            display: inline-block;
+            background: #f8f0ee;
+            border: 1px solid #e8d0ce;
+            border-radius: 50px;
+            padding: 12px 25px;
+            font-size: 1rem;
+            color: #8c6b62;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+        }
+        
+        .action-btn:hover {
+            background: #e8d0ce;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(200, 162, 157, 0.3);
+        }
+        
+        .action-btn.calendar {
+            background: #f8f0ee;
+            border-color: #d8b9b5;
+            color: #8c6b62;
+        }
+        
+        .action-btn.map {
+            background: #f8f0ee;
+            border-color: #d8b9b5;
+            color: #8c6b62;
+        }
+        
+        .confirmation-form {
+            background: #fcf8f5;
+            border-radius: 12px;
+            padding: 40px 30px;
+            margin: 40px auto;
+            max-width: 500px;
+            box-shadow: 0 8px 20px rgba(149, 118, 111, 0.08);
+            border: 1px solid rgba(232, 208, 206, 0.3);
+            position: relative;
+        }
+        
+        .confirmation-form h2 {
+            font-family: 'Old Standard TT', serif;
+            color: #8c6b62;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #7a665f;
+            padding-left: 8px;
+            font-size: 1.05rem;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #e8d0ce;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background: white;
+            color: #5a4a42;
+        }
+        
+        .form-group input:focus {
+            border-color: #c8a29d;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(200, 162, 157, 0.2);
+        }
+        
+        .form-group input::placeholder {
+            color: #c8b6b0;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #d8b9b5, #c8a29d);
+            color: white;
+            border: none;
+            padding: 16px 45px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-top: 10px;
+            box-shadow: 0 5px 15px rgba(200, 162, 157, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(200, 162, 157, 0.6);
+            background: linear-gradient(135deg, #c8a29d, #b88d88);
+        }
+        
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+        
+        .confirmation-message {
+            display: none;
+            background: #f0f7e9;
+            color: #5a7d59;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 25px;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+            border: 1px solid #d8e6d1;
+            font-size: 1.1rem;
+        }
+        
+        .error-message {
+            display: none;
+            background: #fce8e8;
+            color: #a05a5a;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            text-align: center;
+            border: 1px solid #f5d0d0;
+            font-size: 1rem;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #9e8a83;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(232, 208, 206, 0.5);
+            background: #fcf8f5;
+        }
+        
+        .hearts {
+            color: #d8b9b5;
+            font-size: 1.3rem;
+            letter-spacing: 5px;
+            margin: 0 3px;
+        }
+        
+        .tg-link {
+            color: #8c6b62;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+        
+        .tg-link:hover {
+            color: #c8a29d;
+            text-decoration: underline;
+        }
+        
+        .floral-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 30px 0;
+        }
+        
+        .floral-divider:before,
+        .floral-divider:after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e8d0ce, transparent);
+        }
+        
+        .floral-divider span {
+            margin: 0 15px;
+            color: #d8b9b5;
+            font-size: 1.5rem;
+        }
+        
+        .admin-panel {
+            display: none;
+            padding: 30px;
+            background: #fcf8f5;
+            border-radius: 12px;
+            margin: 40px auto;
+            max-width: 500px;
+            box-shadow: 0 8px 20px rgba(149, 118, 111, 0.08);
+            border: 1px solid rgba(232, 208, 206, 0.3);
+        }
+        
+        .admin-panel h2 {
+            font-family: 'Old Standard TT', serif;
+            color: #8c6b62;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+        }
+        
+        .guest-list {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 20px;
+            border: 1px solid #e8d0ce;
+            border-radius: 8px;
+            padding: 15px;
+            background: white;
+        }
+        
+        .guest-item {
+            padding: 10px;
+            border-bottom: 1px solid #f0e0de;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .guest-item:last-child {
+            border-bottom: none;
+        }
+        
+        .admin-btn {
+            background: #e8d0ce;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            cursor: pointer;
+            margin-top: 20px;
+            font-weight: 500;
+        }
+        
+        .admin-btn:hover {
+            background: #d8b9b5;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 650px) {
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .confirmation-form {
+                padding: 30px 20px;
+            }
+            
+            .detail-card {
+                min-width: 100%;
+            }
+            
+            .couple-names {
+                font-size: 1.8rem;
+            }
+            
+            .couple-photo {
+                height: 250px;
+            }
+            
+            .header p {
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="couple-photo" id="photoContainer">
+                <div class="photo-placeholder">
+                    <i class="fas fa-camera"></i>
+                    <p>Загрузите ваше фото</p>
+                </div>
+            </div>
+            <div class="couple-names">Алексей и Александра</div>
+            <p>Дорогие друзья и родные, мы рады пригласить на юбилейный праздничный ужин</p>
+        </div>
+        
+        <div class="content">
+            <div class="floral-divider">
+                <span>✻</span>
+            </div>
+            
+            <div class="details">
+                <div class="detail-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Дата</h3>
+                    <p>13 сентября 2025 года</p>
+                    <p>Сбор гостей в 17:00</p>
+                    <div class="action-btn calendar" id="addToCalendar">Добавить в Яндекс.Календарь</div>
+                </div>
+                
+                <div class="detail-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Место</h3>
+                    <p>Ресторан "Квелли"</p>
+                    <p>г. Чебоксары, ул. Михаила Сеспеля, 11</p>
+                    <a href="https://yandex.ru/maps/-/CHdpRT9~" target="_blank" class="action-btn map">Посмотреть на карте</a>
+                </div>
+            </div>
+            
+            <div class="floral-divider">
+                <span>✻</span>
+            </div>
+            
+            <div class="confirmation-form">
+                <h2>Подтвердите ваше участие</h2>
+                <form id="confirmationForm">
+                    <div class="form-group">
+                        <label for="guestName">Ваше имя</label>
+                        <input type="text" id="guestName" placeholder="Введите ваше имя" required>
+                    </div>
+                    <button type="submit" class="submit-btn">Подтверждаю участие</button>
+                </form>
+                <div id="confirmationMessage" class="confirmation-message">
+                    Спасибо за подтверждение. Мы с радостью ждем вас на нашем празднике
+                </div>
+                <div id="errorMessage" class="error-message">
+                    Произошла ошибка при отправке. Пожалуйста, позвоните нам
+                </div>
+            </div>
+            
+            <div class="admin-panel" id="adminPanel">
+                <h2>Административная панель</h2>
+                <p>Подтвердившие гости:</p>
+                <div class="guest-list" id="guestList">
+                    <!-- Список гостей будет здесь -->
+                </div>
+                <button class="admin-btn" id="clearStorage">Очистить список</button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>С любовью, 
+                <a href="https://t.me/chekhovtot" class="tg-link">Алексей</a> 
+                и 
+                <a href="https://t.me/alexsasha_13" class="tg-link">Александра</a> 
+                <span class="hearts">♥</span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('confirmationForm');
+            const message = document.getElementById('confirmationMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const guestNameInput = document.getElementById('guestName');
+            const calendarBtn = document.getElementById('addToCalendar');
+            const photoContainer = document.getElementById('photoContainer');
+            const adminPanel = document.getElementById('adminPanel');
+            const guestList = document.getElementById('guestList');
+            const clearStorageBtn = document.getElementById('clearStorage');
+            
+            // Показывать админ-панель только если в URL есть ?admin=true
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('admin') === 'true') {
+                adminPanel.style.display = 'block';
+                updateGuestList();
+            }
+            
+            // Создаем событие для Яндекс.Календаря
+            const eventData = {
+                name: 'Юбилей свадьбы Алексея и Александры (10 лет)',
+                description: 'Приглашение на юбилей свадьбы',
+                location: 'Ресторан "Квелли", г. Чебоксары, ул. Михаила Сеспеля, 11',
+                start: '20250913T170000',
+                end: '20250913T230000',
+                tz: 'Europe/Moscow'
+            };
+            
+            // Функция для добавления в Яндекс.Календарь
+            function addToYandexCalendar() {
+                const url = `https://calendar.yandex.ru/event?` +
+                    `name=${encodeURIComponent(eventData.name)}` +
+                    `&details=${encodeURIComponent(eventData.description)}` +
+                    `&dates=${eventData.start}/${eventData.end}` +
+                    `&tz=${eventData.tz}` +
+                    `&location=${encodeURIComponent(eventData.location)}`;
+                
+                window.open(url, '_blank');
+            }
+            
+            // Обработчик для кнопки календаря
+            calendarBtn.addEventListener('click', addToYandexCalendar);
+            
+            // Обработка формы
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const guestName = guestNameInput.value.trim();
+                
+                if (guestName) {
+                    // Сохраняем в localStorage
+                    saveGuest(guestName);
+                    
+                    // Показываем сообщение
+                    message.style.display = 'block';
+                    errorMessage.style.display = 'none';
+                    
+                    // Очищаем поле ввода
+                    guestNameInput.value = '';
+                    
+                    // Обновляем список гостей в админке
+                    updateGuestList();
+                }
+            });
+            
+            // Функция сохранения гостя
+            function saveGuest(name) {
+                let guests = JSON.parse(localStorage.getItem('weddingGuests') || '[]');
+                if (!guests.includes(name)) {
+                    guests.push(name);
+                    localStorage.setItem('weddingGuests', JSON.stringify(guests));
+                }
+            }
+            
+            // Обновление списка гостей в админке
+            function updateGuestList() {
+                const guests = JSON.parse(localStorage.getItem('weddingGuests') || '[]');
+                guestList.innerHTML = '';
+                
+                if (guests.length === 0) {
+                    guestList.innerHTML = '<p>Пока никто не подтвердил участие</p>';
+                    return;
+                }
+                
+                guests.forEach(guest => {
+                    const guestItem = document.createElement('div');
+                    guestItem.className = 'guest-item';
+                    guestItem.innerHTML = `<span>${guest}</span>`;
+                    guestList.appendChild(guestItem);
+                });
+            }
+            
+            // Очистка хранилища
+            clearStorageBtn.addEventListener('click', function() {
+                if (confirm('Вы уверены, что хотите очистить список гостей?')) {
+                    localStorage.removeItem('weddingGuests');
+                    updateGuestList();
+                }
+            });
+            
+            // Функция для загрузки фото
+            function loadPhoto() {
+                const fileInput = document.createElement('input');
+                fileInput.type = 'file';
+                fileInput.accept = 'image/*';
+                fileInput.style.display = 'none';
+                
+                fileInput.addEventListener('change', function(e) {
+                    if (e.target.files && e.target.files[0]) {
+                        const reader = new FileReader();
+                        
+                        reader.onload = function(event) {
+                            const img = document.createElement('img');
+                            img.src = event.target.result;
+                            img.alt = 'Фото Алексея и Александры';
+                            
+                            // Очищаем контейнер и добавляем фото
+                            photoContainer.innerHTML = '';
+                            photoContainer.appendChild(img);
+                        }
+                        
+                        reader.readAsDataURL(e.target.files[0]);
+                    }
+                });
+                
+                document.body.appendChild(fileInput);
+                fileInput.click();
+                document.body.removeChild(fileInput);
+            }
+            
+            // Добавляем возможность загрузки фото
+            photoContainer.addEventListener('click', loadPhoto);
+            photoContainer.style.cursor = 'pointer';
+        });
+    </script>
+</body>
+</html>
