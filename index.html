@@ -72,23 +72,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-direction: column;
         }
         
         .couple-photo img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-        
-        .photo-placeholder {
-            text-align: center;
-            color: #c8a29d;
-        }
-        
-        .photo-placeholder i {
-            font-size: 4rem;
-            margin-bottom: 15px;
         }
         
         .couple-names {
@@ -115,6 +104,7 @@
             line-height: 1.6;
             color: #7a665f;
             font-weight: 400;
+            padding: 0 15px;
         }
         
         .content {
@@ -367,62 +357,6 @@
             font-size: 1.5rem;
         }
         
-        .admin-panel {
-            display: none;
-            padding: 30px;
-            background: #fcf8f5;
-            border-radius: 12px;
-            margin: 40px auto;
-            max-width: 500px;
-            box-shadow: 0 8px 20px rgba(149, 118, 111, 0.08);
-            border: 1px solid rgba(232, 208, 206, 0.3);
-        }
-        
-        .admin-panel h2 {
-            font-family: 'Old Standard TT', serif;
-            color: #8c6b62;
-            margin-bottom: 20px;
-            font-size: 1.8rem;
-            font-weight: 700;
-            text-align: center;
-        }
-        
-        .guest-list {
-            max-height: 300px;
-            overflow-y: auto;
-            margin-top: 20px;
-            border: 1px solid #e8d0ce;
-            border-radius: 8px;
-            padding: 15px;
-            background: white;
-        }
-        
-        .guest-item {
-            padding: 10px;
-            border-bottom: 1px solid #f0e0de;
-            display: flex;
-            justify-content: space-between;
-        }
-        
-        .guest-item:last-child {
-            border-bottom: none;
-        }
-        
-        .admin-btn {
-            background: #e8d0ce;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            margin-top: 20px;
-            font-weight: 500;
-        }
-        
-        .admin-btn:hover {
-            background: #d8b9b5;
-        }
-        
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
@@ -459,10 +393,7 @@
     <div class="container">
         <div class="header">
             <div class="couple-photo" id="photoContainer">
-                <div class="photo-placeholder">
-                    <i class="fas fa-camera"></i>
-                    <p>Загрузите ваше фото</p>
-                </div>
+                <img src="https://avatars.mds.yandex.net/i?id=f3e1d3cff8e1d7b3b4e9d5d5c0d9e2d3d-5228364-images-thumbs&n=13" alt="Фото Алексея и Александры">
             </div>
             <div class="couple-names">Алексей и Александра</div>
             <p>Дорогие друзья и родные, мы рады пригласить на юбилейный праздничный ужин</p>
@@ -479,7 +410,7 @@
                     <h3>Дата</h3>
                     <p>13 сентября 2025 года</p>
                     <p>Сбор гостей в 17:00</p>
-                    <div class="action-btn calendar" id="addToCalendar">Добавить в Яндекс.Календарь</div>
+                    <div class="action-btn calendar" id="addToCalendar">Записать в календарь</div>
                 </div>
                 
                 <div class="detail-card">
@@ -511,15 +442,6 @@
                     Произошла ошибка при отправке. Пожалуйста, позвоните нам
                 </div>
             </div>
-            
-            <div class="admin-panel" id="adminPanel">
-                <h2>Административная панель</h2>
-                <p>Подтвердившие гости:</p>
-                <div class="guest-list" id="guestList">
-                    <!-- Список гостей будет здесь -->
-                </div>
-                <button class="admin-btn" id="clearStorage">Очистить список</button>
-            </div>
         </div>
         
         <div class="footer">
@@ -539,24 +461,13 @@
             const errorMessage = document.getElementById('errorMessage');
             const guestNameInput = document.getElementById('guestName');
             const calendarBtn = document.getElementById('addToCalendar');
-            const photoContainer = document.getElementById('photoContainer');
-            const adminPanel = document.getElementById('adminPanel');
-            const guestList = document.getElementById('guestList');
-            const clearStorageBtn = document.getElementById('clearStorage');
             
-            // Показывать админ-панель только если в URL есть ?admin=true
-            const urlParams = new URLSearchParams(window.location.search);
-            if (urlParams.get('admin') === 'true') {
-                adminPanel.style.display = 'block';
-                updateGuestList();
-            }
-            
-            // Создаем событие для Яндекс.Календаря
+            // Создаем событие для календаря (Яндекс)
             const eventData = {
                 name: 'Юбилей свадьбы Алексея и Александры (10 лет)',
                 description: 'Приглашение на юбилей свадьбы',
                 location: 'Ресторан "Квелли", г. Чебоксары, ул. Михаила Сеспеля, 11',
-                start: '20250913T170000',
+                start: '20250913T170000', // Формат ГГГГММДДТччммсс
                 end: '20250913T230000',
                 tz: 'Europe/Moscow'
             };
@@ -583,8 +494,8 @@
                 const guestName = guestNameInput.value.trim();
                 
                 if (guestName) {
-                    // Сохраняем в localStorage
-                    saveGuest(guestName);
+                    // Отправка уведомления в Telegram
+                    sendTelegramNotification(guestName);
                     
                     // Показываем сообщение
                     message.style.display = 'block';
@@ -593,79 +504,32 @@
                     // Очищаем поле ввода
                     guestNameInput.value = '';
                     
-                    // Обновляем список гостей в админке
-                    updateGuestList();
+                    // Скрываем сообщение через 5 секунд
+                    setTimeout(() => {
+                        message.style.display = 'none';
+                    }, 5000);
                 }
             });
             
-            // Функция сохранения гостя
-            function saveGuest(name) {
-                let guests = JSON.parse(localStorage.getItem('weddingGuests') || '[]');
-                if (!guests.includes(name)) {
-                    guests.push(name);
-                    localStorage.setItem('weddingGuests', JSON.stringify(guests));
-                }
+            // Функция отправки в Telegram
+            function sendTelegramNotification(guestName) {
+                // Замените на свои данные
+                const botToken = '8044741638:AAHDOoIsyLW-NRys0Tm3adfRHmX_FcJmDV8';
+                const chatId = '570670961';
+                const text = `Новое подтверждение на юбилей свадьбы!\nГость: ${guestName}`;
+                
+                const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(text)}`;
+                
+                fetch(url)
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Уведомление отправлено:', data);
+                    })
+                    .catch(error => {
+                        console.error('Ошибка отправки:', error);
+                        errorMessage.style.display = 'block';
+                    });
             }
-            
-            // Обновление списка гостей в админке
-            function updateGuestList() {
-                const guests = JSON.parse(localStorage.getItem('weddingGuests') || '[]');
-                guestList.innerHTML = '';
-                
-                if (guests.length === 0) {
-                    guestList.innerHTML = '<p>Пока никто не подтвердил участие</p>';
-                    return;
-                }
-                
-                guests.forEach(guest => {
-                    const guestItem = document.createElement('div');
-                    guestItem.className = 'guest-item';
-                    guestItem.innerHTML = `<span>${guest}</span>`;
-                    guestList.appendChild(guestItem);
-                });
-            }
-            
-            // Очистка хранилища
-            clearStorageBtn.addEventListener('click', function() {
-                if (confirm('Вы уверены, что хотите очистить список гостей?')) {
-                    localStorage.removeItem('weddingGuests');
-                    updateGuestList();
-                }
-            });
-            
-            // Функция для загрузки фото
-            function loadPhoto() {
-                const fileInput = document.createElement('input');
-                fileInput.type = 'file';
-                fileInput.accept = 'image/*';
-                fileInput.style.display = 'none';
-                
-                fileInput.addEventListener('change', function(e) {
-                    if (e.target.files && e.target.files[0]) {
-                        const reader = new FileReader();
-                        
-                        reader.onload = function(event) {
-                            const img = document.createElement('img');
-                            img.src = event.target.result;
-                            img.alt = 'Фото Алексея и Александры';
-                            
-                            // Очищаем контейнер и добавляем фото
-                            photoContainer.innerHTML = '';
-                            photoContainer.appendChild(img);
-                        }
-                        
-                        reader.readAsDataURL(e.target.files[0]);
-                    }
-                });
-                
-                document.body.appendChild(fileInput);
-                fileInput.click();
-                document.body.removeChild(fileInput);
-            }
-            
-            // Добавляем возможность загрузки фото
-            photoContainer.addEventListener('click', loadPhoto);
-            photoContainer.style.cursor = 'pointer';
         });
     </script>
 </body>
