@@ -62,7 +62,7 @@
         
         .couple-photo {
             width: 100%;
-            height: 300px;
+            height: 400px;
             margin: 0 auto 25px;
             overflow: hidden;
             position: relative;
@@ -78,6 +78,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center 30%;
         }
         
         .couple-names {
@@ -88,6 +89,8 @@
             letter-spacing: 1px;
             position: relative;
             display: inline-block;
+            white-space: nowrap;
+            padding: 0 10px;
         }
         
         .couple-names:before, .couple-names:after {
@@ -362,6 +365,12 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
+        @media (max-width: 768px) {
+            .couple-names {
+                font-size: 2rem;
+            }
+        }
+        
         @media (max-width: 650px) {
             .content {
                 padding: 30px 20px;
@@ -377,14 +386,38 @@
             
             .couple-names {
                 font-size: 1.8rem;
+                letter-spacing: 0.5px;
+            }
+            
+            .couple-names:before, 
+            .couple-names:after {
+                margin: 0 10px;
             }
             
             .couple-photo {
-                height: 250px;
+                height: 300px;
             }
             
             .header p {
                 padding: 0 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .couple-names {
+                font-size: 1.5rem;
+            }
+            
+            .couple-names:before, 
+            .couple-names:after {
+                margin: 0 7px;
+                font-size: 1rem;
+            }
+        }
+        
+        @media (max-width: 380px) {
+            .couple-names {
+                font-size: 1.3rem;
             }
         }
     </style>
@@ -392,8 +425,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="couple-photo" id="photoContainer">
-                <img src="https://avatars.mds.yandex.net/i?id=f3e1d3cff8e1d7b3b4e9d5d5c0d9e2d3d-5228364-images-thumbs&n=13" alt="Фото Алексея и Александры">
+            <div class="couple-photo">
+                <img src="https://a.imgfoto.host/2025/08/07/Cc3bW5Xr2xc-1.jpeg" alt="Алексей и Александра">
             </div>
             <div class="couple-names">Алексей и Александра</div>
             <p>Дорогие друзья и родные, мы рады пригласить на юбилейный праздничный ужин</p>
